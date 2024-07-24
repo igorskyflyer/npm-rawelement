@@ -1,45 +1,46 @@
 {
-  "name": "@igor.dvlpr/$pkg",
+  "name": "@igor.dvlpr/astro-rawelement",
   "version": "1.0.0",
-  "description": "$desc",
+  "description": "🐯 A wrapper-utility that lets you manipulate HTML elements, their attributes and innerHTML as strings, on the go and then render the modified HTML. 💤",
   "sideEffects": false,
-  "type": "module",
   "engines": {
-    "node": "^18.17.1 || ^20.3.0 || >=21.0.0"
+    "node": ">=20.0"
   },
-  	"files": [
-    "dist",
-    "index.ts",
-    "Component.astro"
-  ],
-  "main": "index.ts",
-  "module": "index.ts",
-  "exports": {
-    ".": "./index.ts"
-  },
+  "types": "./dist/index.d.mts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "files": ["dist"],
   "scripts": {
-    "setup-once": "cd site && npm create astro@latest",
-    "dev": "cd site && astro dev",
+    "build": "tsc",
     "pub": "npm run build && npm publish --access public"
   },
-  "keywords": [$tags, "astro-component", "withastro", "igorskyflyer", "igor.dvlpr"],
+  "keywords": [
+    "raw",
+    "element",
+    "html",
+    "jsx",
+    "source",
+    "utility",
+    "wrap",
+    "wrapper",
+    "text",
+    "igorskyflyer",
+    "igor.dvlpr"
+  ],
   "license": "MIT",
   "author": "Igor Dimitrijević <igor.dvlpr@gmail.com> (https://github.com/igorskyflyer)",
   "funding": "https://ko-fi.com/igorskyflyer",
-  "homepage": "https://github.com/igorskyflyer/$repo",
+  "homepage": "https://github.com/igorskyflyer/npm-rawelement",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/igorskyflyer/$repo.git"
+    "url": "git+https://github.com/igorskyflyer/npm-rawelement.git"
   },
   "bugs": {
-    "url": "https://github.com/igorskyflyer/$repo/issues"
+    "url": "https://github.com/igorskyflyer/npm-rawelement/issues"
   },
   "devDependencies": {
-    "@types/node": "^20.14.10",
-    "astro": "^4.11.5",
-    "@biomejs/biome": "^1.8.3"
-  },
-  "peerDependencies": {
-    "astro": ">=1.0.0"
+    "@biomejs/biome": "^1.8.3",
+    "@types/node": "^20.14.12",
+    "typescript": "^5.5.4"
   }
 }
