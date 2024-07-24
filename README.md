@@ -3,7 +3,9 @@
 <br>
 
 <div align="center">
-	🐯 A wrapper-utility that lets you manipulate HTML elements, their attributes and innerHTML as strings, on the go and then render the modified HTML. 💤
+	🐯 A wrapper-utility that lets you manipulate HTML elements, their attributes
+	<br>
+	and innerHTML as strings, on the go and then render the modified HTML. 💤
 </div>
 
 <br>
