@@ -1,4 +1,4 @@
-<h1 align="center">Astro &lt;RawElement &sol;&gt;</h1>
+<h1 align="center">&lt;RawElement &sol;&gt;</h1>
 
 <br>
 
