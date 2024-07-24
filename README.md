@@ -15,7 +15,10 @@
 	<blockquote>
 		<br>
 		<h4>💖 Support further development</h4>
-		<span>I work hard for every project, including this one and your support means a lot to me!
+		<span>I work hard for every project, including this one
+		<br>
+		and your support means a lot to me!
+		<br>
 		<br>
 		Consider buying me a coffee. ☕
 		<br>
@@ -93,7 +96,7 @@ Licensed under the MIT license which is available here, [MIT license](https://gi
 
 [@igor.dvlpr/extendable-string](https://www.npmjs.com/package/@igor.dvlpr/extendable-string)
 
-> _🦀 ExtendableString allows you to create strings on steroids that have custom transformations applied to them, unlike common, plain strings.. 🪀_
+> _🦀 ExtendableString allows you to create strings on steroids that have custom transformations applied to them, unlike common, plain strings. 🪀_
 
 <br>
 
