@@ -9,19 +9,19 @@ export class RawElement {
 
   #tag: keyof HTMLElementTagNameMap
   #format: boolean
-  #source: string
   #attributes: IRawElementAttribute[]
 
+  #_source: string
   #_wrapper: string
 
   constructor(options: IRawElementOptions) {
     this.#assertOptions(options)
 
+    this.#_wrapper = options.data.trim()
     this.#tag = options.tag
     this.#format = options.format ?? true
     this.#attributes = []
-    this.#_wrapper = options.data.trim()
-    this.#source = ''
+    this.#_source = ''
 
     this.#init()
   }
@@ -73,11 +73,11 @@ export class RawElement {
 
   #init() {
     this.#_wrapper = this.#_wrapper.replace(/\r\n/gm, '\n')
-    this.#source = this.#_wrapper
+    this.#_source = this.#_wrapper
 
     this.#assertWrapper()
 
-    this.#source = this.#source.replace(
+    this.#_source = this.#_source.replace(
       new RegExp(
         `\\s*<${this.#tag}(?:\\s[^>]*?)?>\n?([\\s\\S]*?)<\/${this.#tag}>`,
         'im'
@@ -87,14 +87,14 @@ export class RawElement {
 
     if (this.#format) {
       this.#formatCode()
-      this.#source = this.#source.trim()
+      this.#_source = this.#_source.trim()
     }
 
-    this.#source = `\n${this.#source}\n`
+    this.#_source = `\n${this.#_source}\n`
   }
 
   #formatCode() {
-    const lines = this.#source.split('\n')
+    const lines = this.#_source.split('\n')
 
     if (lines.length === 0) {
       return
@@ -110,7 +110,7 @@ export class RawElement {
       return line
     })
 
-    this.#source = trimmedLines.join('\n')
+    this.#_source = trimmedLines.join('\n')
   }
 
   #findAttribute(name: string): number {
@@ -141,17 +141,21 @@ export class RawElement {
       }
     }
 
-    return `<${this.#tag} ${allAttributes}>${this.#source}</${this.#tag}>`
+    return `<${this.#tag} ${allAttributes}>${this.#_source}</${this.#tag}>`
   }
 
   get wrapper(): string {
     if (this.#attributes.length > 0) {
       this.#_wrapper = this.#addWrapperAttributes()
     } else {
-      this.#_wrapper = `<${this.#tag}>${this.#source}</${this.#tag}>`
+      this.#_wrapper = `<${this.#tag}>${this.#_source}</${this.#tag}>`
     }
 
     return this.#_wrapper
+  }
+
+  get source(): string {
+    return this.#_source
   }
 
   setAttribute(name: string, value: string | null): boolean {
