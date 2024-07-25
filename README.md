@@ -83,9 +83,13 @@ interface IRawElementOptions {
 }
 ```
 
-`tag` - the wrapper tag for the element, will contain the text content and optional attributes set by the [`setAttribute()`](#setattributename-string-value-string--null-boolean) method.
+`tag` - the wrapper HTML tag for the element that will contain the text content and optional attributes set by the [`setAttribute()`](#setattributename-string-value-string--null-boolean) method.
 
-`data` - the HTML element to process, as a `String`. Data will be normalized, i.e. `\r\n` replaced with `\n`.
+`data` - the actual HTML element to process, as a `String`.  
+
+The provided HTML element **MUST** have a matching start and an end tag that correspond to the `tag` property, otherwise an error is thrown.  
+
+Data will be normalized, i.e. CRLF (`\r\n`) replaced with LF (`\n`).
 
 `format` - an optional property, whether to format the text content inside of the wrapper element.
 
@@ -100,7 +104,11 @@ interface IRawElementOptions {
 
 ### `wrapper`
 
-Returns the whole wrapper element: start and end tags, attributes - if applicable - and text content.
+Returns the whole wrapper element made of:
+- a start tag,
+- attributes (if applicable),
+- text content,
+- an end tag.
 
 ---
 
