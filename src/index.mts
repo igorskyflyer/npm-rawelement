@@ -14,6 +14,13 @@ export class RawElement {
   #_source: string
   #_wrapper: string
 
+  /** Creates a `RawElement` instance.
+   *
+   *  If no options are specified
+   *  or the required `tag` and `data`
+   *  properties are not passed,
+   *  it will throw an error.
+   */
   constructor(options: IRawElementOptions) {
     this.#assertOptions(options)
 
@@ -137,7 +144,7 @@ export class RawElement {
       const attribute: IRawElementAttribute = this.#attributes[i]
 
       if (typeof attribute.value === 'string') {
-        allAttributes += `${attribute.name}="${attribute.value}"`
+        allAttributes += ` ${attribute.name}="${attribute.value}"`
       }
     }
 
