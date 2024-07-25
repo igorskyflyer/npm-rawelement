@@ -63,13 +63,79 @@ npm i "@igor.dvlpr/rawelement"
 
 ## 🤹🏼 API
 
+### `RawElement(options: IRawElementOptions)`
+
+Creates a `RawElement` instance.  
+
+If no options are specified or the required `tag` and `data` properties are not passed, it will throw an error.
+
+<br>
+
+### `IRawElementOptions`
+
+Options are an interface `IRawElementOptions` of the following structure:
+
+```ts
+interface IRawElementOptions {
+  tag: keyof HTMLElementTagNameMap // = string
+  data: string
+  format?: boolean
+}
+```
+
+`tag` - the wrapper tag for the element, will contain the text content and optional attributes set by the [`setAttribute()`](#setattributename-string-value-string--null-boolean) method.
+
+`data` - the HTML element to process, as a `String`. Data will be normalized, i.e. `\r\n` replaced with `\n`.
+
+`format` - an optional property, whether to format the text content inside of the wrapper element.
+
+
+<br>
+
+> [!TIP]
+> It is **highly** recommended to leave the property `format` to its default value of `true` otherwise the `source` property of an instance of `RawElement` might contain a lot of leading whitespace.
+>
+
+---
+
+### `wrapper`
+
+Returns the whole wrapper element: start and end tags, attributes - if applicable - and text content.
+
+---
+
+### `source`
+
+Returns just the text content of the wrapper element.
+
+<br>
+
+> [!TIP]
+> The text content can be formatted (the default behavior), set `format` in the `options` to false to disable formatting.
+>
+
+---
+
+### `setAttribute(name: string, value: string | null): boolean`
+
+Sets an attribute and its value on the wrapper element.  
+
+To remove an attribute, pass the `value` of `null`.  
+
+Returns a `Boolean` whether the action succeeded.
+
 ---
 
 ## ✨ Examples
 
-``
+`example.ts`
 ```
+import { RawElement } from '@igor.dvlpr/rawelement'
 
+const element: RawElement = new RawElement({
+	tag: 'h1',
+	data: ''
+})
 ```
 
 ---
