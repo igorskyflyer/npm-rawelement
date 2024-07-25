@@ -5,7 +5,7 @@
 <div align="center">
 	🐯 A wrapper-utility that lets you manipulate HTML elements, their attributes
 	<br>
-	and innerHTML as strings, on the go and then render the modified HTML. 💤
+	and innerHTML as strings, on the go and then render the modified HTML. Very useful in SSG projects. 💤
 </div>
 
 <br>
