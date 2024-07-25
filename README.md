@@ -104,9 +104,9 @@ Data will be normalized, i.e. CRLF (`\r\n`) replaced with LF (`\n`).
 
 ### `wrapper`
 
-Returns the whole wrapper element made of:
+The whole wrapper element made of:
 - a start tag,
-- attributes (if applicable),
+- attributes (if present),
 - text content,
 - an end tag.
 
@@ -114,7 +114,7 @@ Returns the whole wrapper element made of:
 
 ### `source`
 
-Returns just the text content of the wrapper element.
+The text content of the wrapper element.
 
 <br>
 
