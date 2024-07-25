@@ -59,6 +59,14 @@ Install it by executing:
 npm i "@igor.dvlpr/rawelement"
 ```
 
+or
+
+```shell
+npm i -D "@igor.dvlpr/rawelement"
+```
+
+depending on the use case.
+
 <br>
 
 ## 🤹🏼 API
