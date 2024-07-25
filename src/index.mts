@@ -151,6 +151,13 @@ export class RawElement {
     return `<${this.#tag} ${allAttributes}>${this.#_source}</${this.#tag}>`
   }
 
+  /**
+   * The whole wrapper element made of:
+   *- a start tag,
+   *- attributes (if present),
+   *- text content,
+   *- an end tag.
+   */
   get wrapper(): string {
     if (this.#attributes.length > 0) {
       this.#_wrapper = this.#addWrapperAttributes()
@@ -161,10 +168,21 @@ export class RawElement {
     return this.#_wrapper
   }
 
+  /**
+   * The text content of the wrapper element.
+   */
   get source(): string {
     return this.#_source
   }
 
+  /**
+   * Sets an attribute and its value on the wrapper element.
+   *
+   * To remove an attribute, pass the `value` of `null`.
+   * @param name The attribute's name.
+   * @param value The value of the attribute.
+   * @returns Returns a `Boolean` whether the action succeeded.
+   */
   setAttribute(name: string, value: string | null): boolean {
     if (typeof name !== 'string' || name.length === 0) {
       return false
