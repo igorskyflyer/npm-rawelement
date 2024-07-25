@@ -148,7 +148,7 @@ Returns a `Boolean` whether the action succeeded.
 ```astro
 ---
 import { Encoder } from '@igor.dvlpr/encode-entities'
-import { RawElement } from '../src/index.mjs'
+import { RawElement } from '@igor.dvlpr/rawelement'
 
 // here we are using Astro (the SSG)
 // but the data can come from any source
