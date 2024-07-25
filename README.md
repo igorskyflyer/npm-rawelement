@@ -3,36 +3,36 @@
 <br>
 
 <div align="center">
-	🐯 A wrapper-utility that lets you manipulate HTML elements, their attributes
-	<br>
-	and innerHTML as strings, on the go and then render the modified HTML. Very useful in SSG projects. 💤
+  🐯 A wrapper-utility that lets you manipulate HTML elements, their attributes
+  <br>
+  and innerHTML as strings, on the go and then render the modified HTML. Very useful in SSG projects. 💤
 </div>
 
 <br>
 <br>
 
 <div align="center">
-	<blockquote>
-		<br>
-		<h4>💖 Support further development</h4>
-		<span>I work hard for every project, including this one
-		<br>
-		and your support means a lot to me!
-		<br>
-		<br>
-		Consider buying me a coffee. ☕
-		<br>
-		<strong>Thank you for supporting my efforts! 🙏😊</strong></span>
-		<br>
-		<br>
-		<a href="https://ko-fi.com/igorskyflyer" target="_blank"><img src="https://raw.githubusercontent.com/igorskyflyer/igorskyflyer/main/assets/ko-fi.png" alt="Donate to igorskyflyer" width="150"></a>
-		<br>
-		<br>
-		<a href="https://github.com/igorskyflyer"><em>@igorskyflyer</em></a>
-		<br>
-		<br>
-		<br>
-	</blockquote>
+  <blockquote>
+    <br>
+    <h4>💖 Support further development</h4>
+    <span>I work hard for every project, including this one
+    <br>
+    and your support means a lot to me!
+    <br>
+    <br>
+    Consider buying me a coffee. ☕
+    <br>
+    <strong>Thank you for supporting my efforts! 🙏😊</strong></span>
+    <br>
+    <br>
+    <a href="https://ko-fi.com/igorskyflyer" target="_blank"><img src="https://raw.githubusercontent.com/igorskyflyer/igorskyflyer/main/assets/ko-fi.png" alt="Donate to igorskyflyer" width="150"></a>
+    <br>
+    <br>
+    <a href="https://github.com/igorskyflyer"><em>@igorskyflyer</em></a>
+    <br>
+    <br>
+    <br>
+  </blockquote>
 </div>
 
 <br>
@@ -136,14 +136,44 @@ Returns a `Boolean` whether the action succeeded.
 
 ## ✨ Examples
 
-`example.ts`
-```
-import { RawElement } from '@igor.dvlpr/rawelement'
+`EncodedComponent.astro`
+```astro
+---
+import { Encoder } from '@igor.dvlpr/encode-entities'
+import { RawElement } from '../src/index.mjs'
+
+// here we are using Astro (the SSG)
+// but the data can come from any source
+const slot: string = await Astro.slots.render('default')
 
 const element: RawElement = new RawElement({
-	tag: 'h1',
-	data: ''
+  tag: 'div',
+  data: slot
 })
+const encoder: Encoder = new Encoder()
+const source: string = encoder.encode(element.source) // this component will always output encoded content
+---
+
+<Fragment set:html={source} />
+```
+
+<br>
+
+`my-page.astro`
+```astro
+import EncodedComponent from './EncodedComponent.astro'
+
+<EncodedComponent>
+  <div is:raw>
+    Mitochondria are known as the "powerhouses" of the cell because they generate most of the cell's supply of ATP & CO<sub>2</sub>, which is used as a source of chemical energy.
+  </div>
+</EncodedComponent>
+
+{/*
+  Will get rendered as:
+
+  Mitochondria are known as the &#34;powerhouses&#34; of the cell because they generate most of the cell&#39;s supply of ATP &#38; CO&#60;sub&#62;2&#60;/sub&#62;, which is used as a source of chemical energy.
+ */}
 ```
 
 ---
