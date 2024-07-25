@@ -148,7 +148,7 @@ export class RawElement {
       }
     }
 
-    return `<${this.#tag} ${allAttributes}>${this.#_source}</${this.#tag}>`
+    return `<${this.#tag}${allAttributes}>${this.#_source}</${this.#tag}>`
   }
 
   /**
