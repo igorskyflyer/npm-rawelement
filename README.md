@@ -145,7 +145,31 @@ The text content of the element.
 
 Sets an attribute and its value on the wrapper element.  
 
-If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be set and this method will throw an Error.  
+<br>
+
+> [!CAUTION]
+> If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be set/removed and this method will throw an Error.
+>
+
+<br>
+
+Passing the `value` of `null` removes the attribute (see [`removeAttribute`](#removeattributename-string-boolean)).  
+
+Returns a `Boolean` whether the action succeeded.
+
+---
+
+### `removeAttribute(name: string): boolean`
+
+Removes an attribute and its value from the wrapper element.  
+
+<br>
+
+> [!CAUTION]
+> If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be set/removed and this method will throw an Error.
+>
+
+<br>
 
 Returns a `Boolean` whether the action succeeded.
 
