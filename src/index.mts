@@ -225,7 +225,7 @@ export class RawElement {
    * @since v1.0.0
    * @param name The attribute's name.
    * @param value The value of the attribute.
-   * @returns Returns a `Boolean` whether the action succeeded.
+   * @returns Returns a Boolean whether the action succeeded.
    */
   setAttribute(name: string, value: string | null): boolean {
     this.#assertAttributes()
@@ -267,8 +267,11 @@ export class RawElement {
    *
    * If the wrapper element is not set, i.e. `tag` is not defined, attributes cannot be used and this method will throw an Error.
    * @since v1.1.0
-   * @param name
-   * @returns
+   * @param name The attribute's name
+   * @returns Returns a `Boolean` with the value of:
+   *
+   * - `true` - if the attribute was found and removed,
+   * - `false` - if the attribute does not exist or there was an error in removing it.
    */
   removeAttribute(name: string): boolean {
     return this.setAttribute(name, null)
