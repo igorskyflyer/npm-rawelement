@@ -133,7 +133,7 @@ The provided HTML element **MUST** have a matching start and an end tag that cor
 
 Gets the whole wrapper element made of:
 - a start tag (if [`tag`](#tag-string) was set),
-- attributes (if [`tag`](#tag-string) was set),,
+- attributes (if [`tag`](#tag-string) was set),
 - text content,
 - an end tag (if [`tag`](#tag-string) was set).
 
