@@ -87,13 +87,13 @@ interface IRawElementOptions {
 
 #### `data: string`
 
-**Required**, the actual HTML element/data to process, as a `String`. 
+**`Required`**, the actual HTML element/data to process, as a `String`. 
 
 Data will be normalized, i.e. CRLF (`\r\n`) replaced with LF (`\n`).
 
 #### `tag?: string`
 
-**Optional**, a wrapper HTML tag for the element that will contain the text content and optional attributes set by the [`setAttribute()`](#setattributename-string-value-string--null-boolean) method.
+**`Optional`**, a wrapper HTML tag for the element that will contain the text content and optional attributes set by the [`setAttribute()`](#setattributename-string-value-string--null-boolean) method.
 
 The provided HTML element **MUST** have a matching start and an end tag that correspond to the value of the `tag` property, otherwise an error is thrown.  
 
@@ -103,7 +103,7 @@ The provided HTML element **MUST** have a matching start and an end tag that cor
 
 #### `format?: boolean`
 
-**Optional**, indicated whether to format the text content inside of the element.
+**`Optional`**, indicates whether to format the text content inside of the element.
 
 <br>
 
