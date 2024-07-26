@@ -121,9 +121,9 @@ The provided HTML element **MUST** have a matching start and an end tag that cor
 
 ### `wrapper`
 
-The whole wrapper element made of:
+Gets the whole wrapper element made of:
 - a start tag (if [`tag`](#tag-string) was set),
-- attributes (if present),
+- attributes (if `tag` was set),,
 - text content,
 - an end tag (if [`tag`](#tag-string) was set).
 
@@ -141,6 +141,22 @@ The text content of the element.
 
 ---
 
+### `hasAttribute(name: string): boolean`
+
+Checks whether the wrapper element has an attribute.  
+
+<br>
+
+> [!CAUTION]
+> If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be used and this method will throw an Error.
+>
+
+<br>
+
+Returns a `Boolean` indicating whether the provided attribute exists.
+
+---
+
 ### `setAttribute(name: string, value: string | null): boolean`
 
 Sets an attribute and its value on the wrapper element.  
@@ -148,14 +164,14 @@ Sets an attribute and its value on the wrapper element.
 <br>
 
 > [!CAUTION]
-> If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be set/removed and this method will throw an Error.
+> If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be used and this method will throw an Error.
 >
 
 <br>
 
-Passing the `value` of `null` removes the attribute (see [`removeAttribute`](#removeattributename-string-boolean)).  
+Passing the `value` of `null` removes the attribute (see [`removeAttribute`](#removeattributename-string-boolean)) as well.  
 
-Returns a `Boolean` whether the action succeeded.
+Returns a `Boolean` indicating whether the action succeeded.
 
 ---
 
@@ -166,12 +182,15 @@ Removes an attribute and its value from the wrapper element.
 <br>
 
 > [!CAUTION]
-> If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be set/removed and this method will throw an Error.
+> If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be used and this method will throw an Error.
 >
 
 <br>
 
-Returns a `Boolean` whether the action succeeded.
+Returns a `Boolean` with the value of:
+
+- `true` - if the attribute was found and removed,
+- `false` - if the attribute does not exist or there was an error in removing it.
 
 ---
 
