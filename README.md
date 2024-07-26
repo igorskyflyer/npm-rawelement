@@ -141,7 +141,7 @@ Gets the whole wrapper element made of:
 
 ### `source`
 
-The text content of the element.
+Gets the text content of the element.
 
 <br>
 
