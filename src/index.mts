@@ -181,7 +181,7 @@ export class RawElement {
   }
 
   /**
-   * The text content of the element.
+   * Gets the text content of the element.
    * @since v1.0.0
    */
   get source(): string {
