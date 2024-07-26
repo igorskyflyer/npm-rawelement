@@ -5,9 +5,9 @@ import type { IRawElementOptions } from './IRawElementOptions.mjs'
 
 export class RawElement {
   #rxLeadingWhitespace: RegExp = /^([\s]*)/
-  #rxWrapperTags: RegExp = /\s*<(\w+)(?:\s[^>]*)?>[\s\S]*?<\/(.*?)>$/im
+  #rxWrapperTags: RegExp = /^\s*<(\w+)(?:\s[^>]*)?>([\s\S]*?)<\/(\1)>$/i
 
-  #tag: keyof HTMLElementTagNameMap
+  #tag?: keyof HTMLElementTagNameMap
   #format: boolean
   #attributes: IRawElementAttribute[]
 
@@ -17,9 +17,10 @@ export class RawElement {
   /** Creates a `RawElement` instance.
    *
    *  If no options are specified
-   *  or the required `tag` and `data`
-   *  properties are not passed,
+   *  or the required `data`
+   *  property is not passed,
    *  it will throw an error.
+   * @since v1.0.0
    */
   constructor(options: IRawElementOptions) {
     this.#assertOptions(options)
@@ -41,10 +42,6 @@ export class RawElement {
     if (typeof options.data !== 'string' || options.data.length === 0) {
       throw new Error('No data passed to RawElement.')
     }
-
-    if (typeof options.tag !== 'string' || options.tag.length === 0) {
-      throw new Error('No tag name passed to RawElement.')
-    }
   }
 
   #assertWrapper(): boolean {
@@ -54,9 +51,9 @@ export class RawElement {
       this.#_wrapper
     )
 
-    if (match && match.length === 3) {
+    if (match && match.length === 4) {
       const startTag: string = match[1]
-      const endTag: string = match[2]
+      const endTag: string = match[3]
 
       if (startTag !== endTag) {
         throw new Error(
@@ -82,22 +79,26 @@ export class RawElement {
     this.#_wrapper = this.#_wrapper.replace(/\r\n/gm, '\n')
     this.#_source = this.#_wrapper
 
-    this.#assertWrapper()
+    if (typeof this.#tag === 'string') {
+      this.#assertWrapper()
 
-    this.#_source = this.#_source.replace(
-      new RegExp(
-        `\\s*<${this.#tag}(?:\\s[^>]*?)?>\n?([\\s\\S]*?)<\/${this.#tag}>`,
-        'im'
-      ),
-      '$1'
-    )
+      this.#_source = this.#_source.replace(
+        new RegExp(
+          `\\s*<${this.#tag}(?:\\s[^>]*?)?>\n?([\\s\\S]*?)<\/${this.#tag}>`,
+          'im'
+        ),
+        '$1'
+      )
+    }
 
     if (this.#format) {
       this.#formatCode()
       this.#_source = this.#_source.trim()
     }
 
-    this.#_source = `\n${this.#_source}\n`
+    if (typeof this.#tag === 'string') {
+      this.#_source = `\n${this.#_source}\n`
+    }
   }
 
   #formatCode() {
@@ -151,48 +152,102 @@ export class RawElement {
     return `<${this.#tag}${allAttributes}>${this.#_source}</${this.#tag}>`
   }
 
+  #assertAttributes(): void {
+    if (typeof this.#tag !== 'string') {
+      throw new Error(
+        'Attributes do not work without a wrapper, specify a wrapper tag in order to add attributes.'
+      )
+    }
+  }
+
   /**
-   * The whole wrapper element made of:
-   *- a start tag,
-   *- attributes (if present),
-   *- text content,
-   *- an end tag.
+   * Gets the whole wrapper element made of:
+   * - a start tag (if `tag` was set),
+   * - attributes (if `tag` was set),
+   * - text content,
+   * - an end tag (if `tag` was set).
+   * @since v1.0.0
    */
   get wrapper(): string {
-    if (this.#attributes.length > 0) {
-      this.#_wrapper = this.#addWrapperAttributes()
-    } else {
-      this.#_wrapper = `<${this.#tag}>${this.#_source}</${this.#tag}>`
+    if (typeof this.#tag === 'string') {
+      if (this.#attributes.length > 0) {
+        this.#_wrapper = this.#addWrapperAttributes()
+      } else {
+        this.#_wrapper = `<${this.#tag}>${this.#_source}</${this.#tag}>`
+      }
     }
 
     return this.#_wrapper
   }
 
   /**
-   * The text content of the wrapper element.
+   * The text content of the element.
+   * @since v1.0.0
    */
   get source(): string {
     return this.#_source
   }
 
   /**
+   * Checks whether the wrapper element
+   * has an attribute.
+   *
+   * If the wrapper element is not set, i.e. `tag` is not defined, attributes cannot be used and this method will throw an Error.
+   * @since v1.1.0
+   * @param name The name of the attribute to look for
+   * @returns Returns a Boolean indicating the existence of
+   * the attribute
+   */
+  hasAttribute(name: string): boolean {
+    this.#assertAttributes()
+
+    if (typeof name !== 'string') {
+      return false
+    }
+
+    if (this.#attributes.length > 0) {
+      const count: number = this.#attributes.length
+
+      for (let i = 0; i < count; i++) {
+        if (this.#attributes[i].name === name) {
+          return true
+        }
+      }
+    }
+
+    return false
+  }
+
+  /**
    * Sets an attribute and its value on the wrapper element.
    *
-   * To remove an attribute, pass the `value` of `null`.
+   * If the wrapper element is not set, i.e. `tag` is not defined, attributes cannot be used and this method will throw an Error.
+   * @since v1.0.0
    * @param name The attribute's name.
    * @param value The value of the attribute.
    * @returns Returns a `Boolean` whether the action succeeded.
    */
   setAttribute(name: string, value: string | null): boolean {
+    this.#assertAttributes()
+
     if (typeof name !== 'string' || name.length === 0) {
       return false
     }
 
-    if (value !== null && typeof value !== 'string') {
+    const attributeIndex = this.#findAttribute(name)
+
+    if (value === null) {
+      if (attributeIndex > -1) {
+        this.#attributes.splice(attributeIndex, 1)
+        return true
+      }
+
       return false
     }
 
-    const attributeIndex = this.#findAttribute(name)
+    if (typeof value !== 'string') {
+      return false
+    }
 
     if (attributeIndex > -1) {
       this.#attributes[attributeIndex].value = value
@@ -205,5 +260,17 @@ export class RawElement {
     })
 
     return true
+  }
+
+  /**
+   * Removes an attribute and its value from the wrapper element.
+   *
+   * If the wrapper element is not set, i.e. `tag` is not defined, attributes cannot be used and this method will throw an Error.
+   * @since v1.1.0
+   * @param name
+   * @returns
+   */
+  removeAttribute(name: string): boolean {
+    return this.setAttribute(name, null)
   }
 }
