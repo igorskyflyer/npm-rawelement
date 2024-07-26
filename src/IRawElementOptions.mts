@@ -1,7 +1,7 @@
 // Author: Igor Dimitrijević (@igorskyflyer)
 
 export interface IRawElementOptions {
-  tag: keyof HTMLElementTagNameMap
   data: string
+  tag?: keyof HTMLElementTagNameMap
   format?: boolean
 }
