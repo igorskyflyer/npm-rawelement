@@ -1,11 +1,13 @@
-<h1 align="center">&lt;RawElement &sol;&gt;</h1>
+<h1 align="center">&lt;RawElement /&gt;</h1>
 
 <br>
 
 <div align="center">
-  🐯 A wrapper-utility that lets you manipulate HTML elements, their attributes
+  🐯 A utility that lets you manipulate HTML elements, their attributes and
   <br>
-  and innerHTML as strings, on the go and then render the modified HTML. Very useful in SSG projects. 💤
+  innerHTML as strings, on the go and then render the modified HTML.
+  <br>
+  <em>Very <strong>useful</strong> in SSG projects.</em> 💤
 </div>
 
 <br>
@@ -59,14 +61,6 @@ Install it by executing:
 npm i "@igor.dvlpr/rawelement"
 ```
 
-or
-
-```shell
-npm i -D "@igor.dvlpr/rawelement"
-```
-
-depending on the use case.
-
 <br>
 
 ## 🤹🏼 API
@@ -75,7 +69,7 @@ depending on the use case.
 
 Creates a `RawElement` instance.  
 
-If no options are specified or the required `tag` and `data` properties are not passed, it will throw an error.
+If no options are specified or the required `data` property is not passed, it will throw an error.
 
 <br>
 
@@ -85,22 +79,31 @@ Options are an interface `IRawElementOptions` of the following structure:
 
 ```ts
 interface IRawElementOptions {
-  tag: keyof HTMLElementTagNameMap // = string
   data: string
+  tag?: keyof HTMLElementTagNameMap // = string
   format?: boolean
 }
 ```
 
-`tag` - the wrapper HTML tag for the element that will contain the text content and optional attributes set by the [`setAttribute()`](#setattributename-string-value-string--null-boolean) method.
+#### `data: string`
 
-`data` - the actual HTML element to process, as a `String`.  
-
-The provided HTML element **MUST** have a matching start and an end tag that correspond to the `tag` property, otherwise an error is thrown.  
+**Required**, the actual HTML element/data to process, as a `String`. 
 
 Data will be normalized, i.e. CRLF (`\r\n`) replaced with LF (`\n`).
 
-`format` - an optional property, whether to format the text content inside of the wrapper element.
+#### `tag?: string`
 
+**Optional**, a wrapper HTML tag for the element that will contain the text content and optional attributes set by the [`setAttribute()`](#setattributename-string-value-string--null-boolean) method.
+
+The provided HTML element **MUST** have a matching start and an end tag that correspond to the value of the `tag` property, otherwise an error is thrown.  
+
+> [!NOTE]
+> [`setAttribute`](#setattributename-string-value-string--null-boolean) only works when the `tag` property is defined.
+>
+
+#### `format?: boolean`
+
+**Optional**, indicated whether to format the text content inside of the element.
 
 <br>
 
@@ -113,16 +116,16 @@ Data will be normalized, i.e. CRLF (`\r\n`) replaced with LF (`\n`).
 ### `wrapper`
 
 The whole wrapper element made of:
-- a start tag,
+- a start tag (if [`tag`](#tag-string) was set),
 - attributes (if present),
 - text content,
-- an end tag.
+- an end tag (if [`tag`](#tag-string) was set).
 
 ---
 
 ### `source`
 
-The text content of the wrapper element.
+The text content of the element.
 
 <br>
 
@@ -136,7 +139,7 @@ The text content of the wrapper element.
 
 Sets an attribute and its value on the wrapper element.  
 
-To remove an attribute, pass the `value` of `null`.  
+If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be set and this method will throw an Error.  
 
 Returns a `Boolean` whether the action succeeded.
 
