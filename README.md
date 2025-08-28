@@ -126,7 +126,7 @@ The provided HTML element **MUST** have a matching start and an end tag that cor
 > It is **highly** recommended to leave the property `format` to its default value of `true` otherwise the `source` property of an instance of `RawElement` might contain a lot of leading whitespace. 
 >
 
----
+<br>
 
 ### `wrapper`
 
@@ -136,7 +136,7 @@ Gets the whole wrapper element made of:
 - text content,
 - an end tag (if [`tag`](#tag-string) was set).
 
----
+<br>
 
 ### `source`
 
@@ -149,7 +149,7 @@ Gets the text content of the element.
 > The text content can be formatted (the default behavior), set `format` in the `options` to false to disable formatting. 
 >
 
----
+<br>
 
 ### `hasAttribute(name: string): boolean`
 
@@ -166,7 +166,7 @@ Checks whether the wrapper element has an attribute.
 
 Returns a `Boolean` indicating whether the provided attribute exists.
 
----
+<br>
 
 ### `setAttribute(name: string, value: string | null): boolean`
 
@@ -185,7 +185,7 @@ Passing the `value` of `null` removes the attribute (see [`removeAttribute`](#re
 
 Returns a `Boolean` indicating whether the action succeeded.
 
----
+<br>
 
 ### `removeAttribute(name: string): boolean`
 
