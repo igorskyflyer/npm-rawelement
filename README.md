@@ -108,7 +108,8 @@ The provided HTML element **MUST** have a matching start and an end tag that cor
 
 <br>
 
-> [!NOTE]
+> ℹ️ **NOTE**
+>
 > [`setAttribute`](#setattributename-string-value-string--null-boolean) only works when the `tag` property is defined.
 >
 
@@ -120,8 +121,9 @@ The provided HTML element **MUST** have a matching start and an end tag that cor
 
 <br>
 
-> [!TIP]
-> It is **highly** recommended to leave the property `format` to its default value of `true` otherwise the `source` property of an instance of `RawElement` might contain a lot of leading whitespace.
+> 💡 **TIP**
+>
+> It is **highly** recommended to leave the property `format` to its default value of `true` otherwise the `source` property of an instance of `RawElement` might contain a lot of leading whitespace. 
 >
 
 ---
@@ -142,8 +144,9 @@ Gets the text content of the element.
 
 <br>
 
-> [!TIP]
-> The text content can be formatted (the default behavior), set `format` in the `options` to false to disable formatting.
+> 💡 **TIP**
+>
+> The text content can be formatted (the default behavior), set `format` in the `options` to false to disable formatting. 
 >
 
 ---
@@ -154,8 +157,9 @@ Checks whether the wrapper element has an attribute.
 
 <br>
 
-> [!CAUTION]
-> If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be used and this method will throw an Error.
+> 🛑 **CAUTION**
+>
+> If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be used and this method will throw an Error. 
 >
 
 <br>
@@ -170,7 +174,8 @@ Sets an attribute and its value on the wrapper element.
 
 <br>
 
-> [!CAUTION]
+> 🛑 **CAUTION**
+>
 > If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be used and this method will throw an Error.
 >
 
@@ -188,7 +193,8 @@ Removes an attribute and its value from the wrapper element.
 
 <br>
 
-> [!CAUTION]
+> 🛑 **CAUTION**
+>
 > If the wrapper element is not set, i.e. [`tag`](#tag-string) is not defined, attributes cannot be used and this method will throw an Error.
 >
 
