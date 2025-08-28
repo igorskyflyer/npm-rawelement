@@ -1,47 +1,20 @@
-<h1 align="center">&lt;RawElement /&gt;</h1>
-
-<br>
-
 <div align="center">
-  🐯 A utility that lets you manipulate HTML elements, their attributes and
-  <br>
-  innerHTML as strings, on the go and then render the modified HTML.
-  <br>
-  <em>Very <strong>useful</strong> in SSG projects.</em> 💤
+  <img src="https://raw.githubusercontent.com/igorskyflyer/npm-rawelement/main/media/rawelement.png" alt="Icon of RawElement" width="256" height="256">
+  <h1>RawElement</h1>
 </div>
 
 <br>
-<br>
 
-<div align="center">
-  <blockquote>
-    <br>
-    <h4>💖 Support further development</h4>
-    <span>I work hard for every project, including this one
-    <br>
-    and your support means a lot to me!
-    <br>
-    <br>
-    Consider buying me a coffee. ☕
-    <br>
-    <strong>Thank you for supporting my efforts! 🙏😊</strong></span>
-    <br>
-    <br>
-    <a href="https://ko-fi.com/igorskyflyer" target="_blank"><img src="https://raw.githubusercontent.com/igorskyflyer/igorskyflyer/main/assets/ko-fi.png" alt="Donate to igorskyflyer" width="150"></a>
-    <br>
-    <br>
-    <a href="https://github.com/igorskyflyer"><em>@igorskyflyer</em></a>
-    <br>
-    <br>
-    <br>
-  </blockquote>
-</div>
+<h4 align="center">
+  🐯 A utility that lets you manipulate HTML elements, their attributes and innerHTML as strings, on the go and then render the modified HTML. Very useful in SSG projects. 💤
+</h4>
 
 <br>
 <br>
 
-## 📃 Table of contents
+## 📃 Table of Contents
 
+- [Features](#-features)
 - [Usage](#-usage)
 - [API](#-api)
     - [`constructor()`](#rawelementoptions-irawelementoptions)
@@ -54,8 +27,9 @@
     - [`hasAttribute()`](#hasattributename-string-boolean)
     - [`setAttribute()`](#setattributename-string-value-string--null-boolean)
     - [`removeAttribute()`](#removeattributename-string-boolean)
-- [Examples](#-examples)
+- [Examples](#️-examples)
 - [Changelog](#-changelog)
+- [Support](#-support)
 - [License](#-license)
 - [Related](#-related)
 - [Author](#-author)
@@ -63,14 +37,37 @@
 <br>
 <br>
 
+## 🤖 Features
+
+- 🏗 Create and manage raw HTML element wrappers from plain strings
+- 🛡 Validates matching start/end tags for consistency
+- ✂ Strips wrapper tags while keeping inner content intact
+- 🎨 Optional formatting to remove leading indentation
+- 🏷 Add, update, check, or remove wrapper element attributes
+- 📦 Returns full wrapper or just inner source on demand
+- ⚡ Precompiled regex for fast whitespace and tag matching
+- 🚫 Throws clear errors on invalid data or attribute usage without a wrapper
+
+<br>
+<br>
+
 ## 🕵🏼 Usage
 
-Install it by executing:
+Install it by executing any of the following, depending on your preferred package manager:
 
-```shell
-npm i "@igor.dvlpr/rawelement"
+```bash
+pnpm add @igorskyflyer/rawelement
 ```
 
+```bash
+yarn add @igorskyflyer/rawelement
+```
+
+```bash
+npm i @igorskyflyer/rawelement
+```
+
+<br>
 <br>
 
 ## 🤹🏼 API
@@ -202,15 +199,17 @@ Returns a `Boolean` with the value of:
 - `true` - if the attribute was found and removed,
 - `false` - if the attribute does not exist or there was an error in removing it.
 
----
 
-## ✨ Examples
+<br>
+<br>
+
+## 🗒️ Examples
 
 `EncodedComponent.astro`
 ```astro
 ---
-import { Encoder } from '@igor.dvlpr/encode-entities'
-import { RawElement } from '@igor.dvlpr/rawelement'
+import { Encoder } from '@igorskyflyer/encode-entities'
+import { RawElement } from '@igorskyflyer/rawelement'
 
 // here we are using Astro (the SSG)
 // but the data can come from any source
@@ -246,53 +245,74 @@ import EncodedComponent from './EncodedComponent.astro'
 */}
 ```
 
----
+<br>
+<br>
 
 ## 📝 Changelog
 
-📑 The changelog is available here: [CHANGELOG.md](https://github.com/igorskyflyer/npm-rawelement/blob/main/CHANGELOG.md).
+📑 The changelog is available here, [CHANGELOG.md](https://github.com/igorskyflyer/npm-rawelement/blob/main/CHANGELOG.md).
 
----
+<br>
+<br>
 
 ## 🪪 License
 
 Licensed under the MIT license which is available here, [MIT license](https://github.com/igorskyflyer/npm-rawelement/blob/main/LICENSE).
 
----
+<br>
+<br>
+
+## 💖 Support
+
+<div align="center">
+  I work hard for every project, including this one and your support means a lot to me!
+  <br>
+  Consider buying me a coffee. ☕
+  <br>
+  <br>
+  <a href="https://ko-fi.com/igorskyflyer" target="_blank"><img src="https://raw.githubusercontent.com/igorskyflyer/igorskyflyer/main/assets/ko-fi.png" alt="Donate to igorskyflyer" width="180" height="46"></a>
+  <br>
+  <br>
+  <em>Thank you for supporting my efforts!</em> 🙏😊
+</div>
+
+<br>
+<br>
 
 ## 🧬 Related
 
-[@igor.dvlpr/astro-post-excerpt](https://www.npmjs.com/package/@igor.dvlpr/astro-post-excerpt)
+[@igorskyflyer/astro-post-excerpt](https://www.npmjs.com/package/@igorskyflyer/astro-post-excerpt)
 
 > _⭐ An Astro component that renders post excerpts for your Astro blog - directly from your Markdown and MDX files. Astro v2+ collections are supported as well! 💎_
 
 <br>
 
-[@igor.dvlpr/extendable-string](https://www.npmjs.com/package/@igor.dvlpr/extendable-string)
+[@igorskyflyer/extendable-string](https://www.npmjs.com/package/@igorskyflyer/extendable-string)
 
 > _🦀 ExtendableString allows you to create strings on steroids that have custom transformations applied to them, unlike common, plain strings. 🪀_
 
 <br>
 
-[@igor.dvlpr/duoscribi](https://www.npmjs.com/package/@igor.dvlpr/duoscribi)
+[@igorskyflyer/duoscribi](https://www.npmjs.com/package/@igorskyflyer/duoscribi)
 
 > _✒ DúöScríbî allows you to convert letters with diacritics to regular letters. 🤓_
 
 <br>
 
-[@igor.dvlpr/magic-queryselector](https://www.npmjs.com/package/@igor.dvlpr/magic-queryselector)
+[@igorskyflyer/magic-queryselector](https://www.npmjs.com/package/@igorskyflyer/magic-queryselector)
 
 > _🪄 A TypeScript-types patch for querySelector/querySelectorAll, make them return types you expect them to! 🔮_
 
 <br>
 
-[@igor.dvlpr/strip-headings](https://www.npmjs.com/package/@igor.dvlpr/strip-headings)
+[@igorskyflyer/strip-headings](https://www.npmjs.com/package/@igorskyflyer/strip-headings)
 
 > _⛸ Strips Markdown headings!🏹_
 
----
-
+<br>
+<br>
 <br>
 
-### 👨🏻‍💻 Author
-Created by **Igor Dimitrijević** ([*@igorskyflyer*](https://github.com/igorskyflyer/)).
+## 👨🏻‍💻 Author
+
+Created by **Igor Dimitrijević** ([_@igorskyflyer_](https://github.com/igorskyflyer/)).
