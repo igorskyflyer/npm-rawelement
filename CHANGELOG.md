@@ -1,12 +1,17 @@
-## 📒 Changelog
+# 📒 Changelog
 
-### of [@igor.dvlpr/rawelement](https://github.com/igorskyflyer/npm-rawelement)
+### of [@igorskyflyer/rawelement](https://github.com/igorskyflyer/npm-rawelement)
 
 <br>
 
-## v1.1.0
+## v1.2.0 (*28-Aug-2025*)
 
-<p align="right"><em>26-Jul-2024</em></p>
+- **💻 dev**: upgrade Node to >= v22
+- **💻 dev**: upgrade dependencies
+
+<br>
+
+## v1.1.0 (*26-Jul-2024*)
 
 - **🪅 feat**: make the [`tag`](./README.md#tag-string) property optional
 - **🪅 feat**: add the [`hasAttribute`](./README.md#hasattributename-string-boolean) method for checking whether an attribute exists
@@ -20,17 +25,13 @@
 <br>
 <br>
 
-## v1.0.1
-
-<p align="right"><em>25-Jul-2024</em></p>
+## v1.0.1 (*25-Jul-2024*)
 
 - **✅ fix**: fix attributes spacing
 
 <br>
 <br>
 
-## v1.0.0
-
-<p align="right"><em>25-Jul-2024</em></p>
+## v1.0.0 (*25-Jul-2024*)
 
 - **🚀 launch**: initial release 🎉
