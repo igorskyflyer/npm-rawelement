@@ -1,47 +1,55 @@
 {
-    "name": "@igor.dvlpr/rawelement",
-    "version": "1.1.0",
-    "description": "🐯 A utility that lets you manipulate HTML elements, their attributes and innerHTML as strings, on the go and then render the modified HTML. Very useful in SSG projects. 💤",
-    "sideEffects": false,
-    "engines": {
-        "node": ">=20.0"
-    },
-    "types": "./dist/index.d.mts",
-    "main": "./dist/index.mjs",
-    "module": "./dist/index.mjs",
-    "files": ["dist"],
-    "scripts": {
-        "build": "tsc",
-        "pub": "npm run build && npm publish --access public"
-    },
-    "keywords": [
-        "raw",
-        "element",
-        "html",
-        "jsx",
-        "source",
-        "utility",
-        "wrap",
-        "wrapper",
-        "text",
-        "igorskyflyer",
-        "igor.dvlpr"
-    ],
-    "license": "MIT",
-    "author": "Igor Dimitrijević <igor.dvlpr@gmail.com> (https://github.com/igorskyflyer)",
-    "funding": "https://ko-fi.com/igorskyflyer",
-    "homepage": "https://github.com/igorskyflyer/npm-rawelement",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/igorskyflyer/npm-rawelement.git"
-    },
-    "bugs": {
-        "url": "https://github.com/igorskyflyer/npm-rawelement/issues"
-    },
-    "devDependencies": {
-        "@biomejs/biome": "^1.8.3",
-        "@igor.dvlpr/biome-config-igorskyflyer": "^1.0.1",
-        "@types/node": "^20.14.12",
-        "typescript": "^5.5.4"
-    }
+  "name": "@igorskyflyer/rawelement",
+  "version": "1.2.0",
+  "description": "🐯 A utility that lets you manipulate HTML elements, their attributes and innerHTML as strings, on the go and then render the modified HTML. Very useful in SSG projects. 💤",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22.0"
+  },
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest --run",
+    "pub": "pnpm test && git push origin main --tags"
+  },
+  "keywords": [
+    "raw",
+    "element",
+    "html",
+    "jsx",
+    "source",
+    "utility",
+    "wrap",
+    "wrapper",
+    "text",
+    "igorskyflyer"
+  ],
+  "license": "MIT",
+  "author": "Igor Dimitrijević <support@igorskyflyer.me> (https://github.com/igorskyflyer)",
+  "funding": "https://ko-fi.com/igorskyflyer",
+  "homepage": "https://github.com/igorskyflyer/npm-rawelement",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorskyflyer/npm-rawelement.git"
+  },
+  "bugs": {
+    "url": "https://github.com/igorskyflyer/npm-rawelement/issues"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.2",
+    "@igorskyflyer/biome-config": "^2.1.0",
+    "@types/node": "^22.18.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@10.15.0"
 }
