@@ -3,7 +3,7 @@
     "exclude": ["node_modules/**/*", "test/**/*", "dist/**/*"],
     "compilerOptions": {
         "target": "ES2023",
-        "lib": ["ES2023"],
+        "lib": ["ES2023", "DOM"],
         "module": "NodeNext",
         "moduleResolution": "nodenext",
         "declaration": true,
