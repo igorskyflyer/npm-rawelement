@@ -3,9 +3,12 @@
 import type { IRawElementAttribute } from './IRawElementAttribute.js'
 import type { IRawElementOptions } from './IRawElementOptions.js'
 
+const RE_LEADINGWHITESPACE: RegExp = /^([\s]*)/
+const RE_WRAPPERTAGS: RegExp = /^\s*<(\w+)(?:\s[^>]*)?>([\s\S]*?)<\/(\1)>$/i
+
 export class RawElement {
-  #rxLeadingWhitespace: RegExp = /^([\s]*)/
-  #rxWrapperTags: RegExp = /^\s*<(\w+)(?:\s[^>]*)?>([\s\S]*?)<\/(\1)>$/i
+  #rxLeadingWhitespace: RegExp = RE_LEADINGWHITESPACE
+  #rxWrapperTags: RegExp = RE_WRAPPERTAGS
 
   #tag?: keyof HTMLElementTagNameMap
   #format: boolean
@@ -84,7 +87,7 @@ export class RawElement {
 
       this.#_source = this.#_source.replace(
         new RegExp(
-          `\\s*<${this.#tag}(?:\\s[^>]*?)?>\n?([\\s\\S]*?)<\/${this.#tag}>`,
+          `\\s*<${this.#tag}(?:\\s[^>]*?)?>\n?([\\s\\S]*?)</${this.#tag}>`,
           'im'
         ),
         '$1'
