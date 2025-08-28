@@ -1,7 +1,7 @@
 // Author: Igor Dimitrijević (@igorskyflyer)
 
-import type { IRawElementAttribute } from './IRawElementAttribute.mjs'
-import type { IRawElementOptions } from './IRawElementOptions.mjs'
+import type { IRawElementAttribute } from './IRawElementAttribute.js'
+import type { IRawElementOptions } from './IRawElementOptions.js'
 
 export class RawElement {
   #rxLeadingWhitespace: RegExp = /^([\s]*)/
